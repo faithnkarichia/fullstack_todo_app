@@ -2,7 +2,8 @@
     import { useEffect, useState } from "react";
     export default function Todos(){
         const [tasks, setTasks] = useState([]);
-        const [newTask, setNewTask] = useState('');
+        const [newTask, setNewTask] = useState({ title: "", description: "" });
+
       
         const addTask = () => {
             const token=localStorage.getItem("access_token")
@@ -111,7 +112,7 @@
               </button>
             </div>
             <ul>
-  {tasks.map((task, index) => (
+  {tasks && tasks.length > 0 && tasks.map((task, index) => (
     
     <li key={index} className="flex justify-between items-center mb-2 border p-2 rounded bg-white shadow">
       <span
